@@ -16,9 +16,9 @@ The library is easy to use, just load a cache and provide it some data.
 
 ```python
 import pandas as pd
-from pycache import PandaFileCache
+from pycache import PandasFileCache
 
-cache = PandaFileCache("./cache_folder")
+cache = PandasFileCache("./cache_folder")
 df = pd.read_csv("test.csv")
 
 cache["my_cool_data"] = df
