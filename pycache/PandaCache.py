@@ -13,7 +13,7 @@ from .Cache import Cache
 TIME_FORMAT = '%Y-%m-%d_%H-%M'
 
 
-class PandaFileCache(Cache):
+class PandasFileCache(Cache):
     """Cache that stores pandas dataframes in files.
     Args:
         Cache ([type]): [description]
