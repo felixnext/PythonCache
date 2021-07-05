@@ -58,7 +58,7 @@ class PandasFileCache(Cache):
         value.to_csv(os.path.join(key_path, f"{date.strftime(TIME_FORMAT)}.csv"), header=True, index=False)
         return True
 
-    def _retrieve(self, key: str, date: datetime = None) -> Tuple[pd.DateFrame, datetime]:
+    def _retrieve(self, key: str, date: datetime = None) -> Tuple[pd.DataFrame, datetime]:
         # find key folder
         enc_key = self._encode_key(key)
         key_path = os.path.join(self.folder, enc_key)
@@ -97,5 +97,10 @@ class PandasFileCache(Cache):
             return None, None
 
         # load the resulting file
-        value = pd.read_csv(items[idx], header="infer")
+        try:
+            value = pd.read_csv(items[idx], header="infer")
+        except pd.errors.EmptyDataError:
+            value = pd.DataFrame()
+        except Exception as ex:
+            raise ex
         return value, dates[idx]
