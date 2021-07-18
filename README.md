@@ -7,7 +7,7 @@ Simple Library to do Python Caching
 To install, simply use:
 
 ```
-pip install .
+pip install extensible-cache
 ```
 
 (Planning to add the library to PyPi in the future).
@@ -16,7 +16,7 @@ The library is easy to use, just load a cache and provide it some data.
 
 ```python
 import pandas as pd
-from pycache import PandasFileCache
+from extensible_cache import PandasFileCache
 
 cache = PandasFileCache("./cache_folder")
 df = pd.read_csv("test.csv")

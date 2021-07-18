@@ -12,7 +12,7 @@ from setuptools import find_packages
 __status__      = "Package"
 __copyright__   = "Copyright 2021"
 __license__     = "MIT License"
-__version__     = "0.1.0"
+__version__     = "1.0.1"
 
 # 01101100 00110000 00110000 01110000
 __author__      = "Felix Geilert"
@@ -29,6 +29,7 @@ setup(name='pycache',
       long_description_content_type="text/markdown",
       keywords='cache;caching',
       url='https://github.com/felixnext/PythonCache',
+      download_url='https://github.com/felixnext/PythonCache/archive/refs/tags/v1.0.tar.gz',
       author='Felix Geilert',
       license='MIT License',
       packages=find_packages(exclude=['tests*']),

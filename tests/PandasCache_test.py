@@ -7,7 +7,7 @@ import unittest
 
 import pandas as pd
 
-import pycache
+import extensible_cache as excache
 
 
 class TestPandasCache(unittest.TestCase):
@@ -17,12 +17,12 @@ class TestPandasCache(unittest.TestCase):
 
     def test_cache_init(self):
         # create the cache and check if folder exists
-        cache = pycache.PandasFileCache(self.cache_folder)
+        cache = excache.PandasFileCache(self.cache_folder)
         self.assertTrue(os.path.isdir(self.cache_folder), "Expecting cache folder to exist")
 
     def test_cache_write(self):
         # create the cache
-        cache = pycache.PandasFileCache(self.cache_folder)
+        cache = excache.PandasFileCache(self.cache_folder)
 
         # insert data
         df = pd.DataFrame([[1, 2, 3], [3, 4, 5]], columns=["A", "B", "C"])
@@ -34,7 +34,7 @@ class TestPandasCache(unittest.TestCase):
 
     def test_cache_write_read(self):
         # create the cache
-        cache = pycache.PandasFileCache(self.cache_folder)
+        cache = excache.PandasFileCache(self.cache_folder)
 
         # insert data
         df = pd.DataFrame([[1, 2, 3], [3, 4, 5]], columns=["A", "B", "C"])
@@ -45,7 +45,7 @@ class TestPandasCache(unittest.TestCase):
 
     def test_cache_write_read_write(self):
         # create the cache
-        cache = pycache.PandasFileCache(self.cache_folder)
+        cache = excache.PandasFileCache(self.cache_folder)
 
         # insert data
         df1 = pd.DataFrame([[1, 2, 3], [3, 4, 5]], columns=["A", "B", "C"])
@@ -61,7 +61,7 @@ class TestPandasCache(unittest.TestCase):
 
     def test_cache_history(self):
         # create the cache
-        cache = pycache.PandasFileCache(self.cache_folder, keep_history=True, outdated_interval=5)
+        cache = excache.PandasFileCache(self.cache_folder, keep_history=True, outdated_interval=5)
 
         # insert first data
         time1 = datetime.now()
