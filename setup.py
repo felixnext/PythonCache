@@ -22,14 +22,14 @@ this_directory = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-setup(name='pycache',
+setup(name='extensible-cache',
       version=__version__,
       description='Extensible Caching Framework for Python',
       long_description=long_description,
       long_description_content_type="text/markdown",
       keywords='cache;caching',
       url='https://github.com/felixnext/PythonCache',
-      download_url='https://github.com/felixnext/PythonCache/archive/refs/tags/v1.0.tar.gz',
+      download_url='https://github.com/felixnext/PythonCache/archive/refs/tags/v1.0.1.tar.gz',
       author='Felix Geilert',
       license='MIT License',
       packages=find_packages(exclude=['tests*']),
