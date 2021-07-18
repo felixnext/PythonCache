@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Any, Tuple
 
 
+# Interval after which data is determined as outdated (if newer data arrives)
 INTERVAL_OUTDATE_SEC = 60
 
 
@@ -15,9 +16,14 @@ class Cache():
     Args:
         keep_history (bool): Defines if the cache should keep all history of the data (usually only prefered for file stores).
             If this is not set, all functions will always return the newest datepoint.
+        outdated_interval (int): Defines the time overlap values are allowed to have before they are deemed outdated
+            if new values arrive.
     """
-    def __init__(self, keep_history: bool = False):
+    def __init__(self, keep_history: bool = False, outdated_interval: int = None):
         self.keep_history = keep_history
+        if outdated_interval is None:
+            outdated_interval = INTERVAL_OUTDATE_SEC
+        self.outdated_interval = outdated_interval
 
     def __getitem__(self, key: str) -> Any:
         '''Retrieves a current item based on the given key.'''
@@ -106,7 +112,7 @@ class Cache():
         Return:
             True if check_date is newer and False if the key_date is newer
         '''
-        interval = INTERVAL_OUTDATE_SEC if not strict else 0
+        interval = self.outdated_interval if not strict else 0
         return (key_date - check_date).total_seconds() < interval
 
     def is_outdated(self, key, date=None):
