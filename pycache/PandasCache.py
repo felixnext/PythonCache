@@ -10,7 +10,7 @@ import pandas as pd
 from .Cache import Cache
 
 
-TIME_FORMAT = '%Y-%m-%d_%H-%M'
+TIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
 
 
 class PandasFileCache(Cache):
@@ -18,8 +18,8 @@ class PandasFileCache(Cache):
     Args:
         Cache ([type]): [description]
     """
-    def __init__(self, storage_folder, keep_history=False):
-        super().__init__(keep_history=keep_history)
+    def __init__(self, storage_folder, keep_history=False, outdated_interval=None):
+        super().__init__(keep_history=keep_history, outdated_interval=outdated_interval)
 
         # set folder and make sure it exists
         self.folder = storage_folder
